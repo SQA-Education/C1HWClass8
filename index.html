@@ -57,9 +57,9 @@ audio{width:100%;margin-top:14px}.hidden{display:none}
 .btn-back:hover{background:#e5e7eb}
 
 .option.correct-reveal{background:#dcfce7 !important;border-color:#22c55e !important;color:#166534}
-.option.correct-reveal::after{content:" ✓";font-weight:700;color:#16a34a}
+.option.correct-reveal::after{content:" \2713";font-weight:700;color:#16a34a}
 .option.wrong-reveal{background:#fee2e2 !important;border-color:#ef4444 !important;color:#991b1b}
-.option.wrong-reveal::after{content:" ✗";font-weight:700;color:#dc2626}
+.option.wrong-reveal::after{content:" \2717";font-weight:700;color:#dc2626}
 .option.review-locked{pointer-events:none;cursor:default}
 </style>
 </head>
@@ -68,7 +68,7 @@ audio{width:100%;margin-top:14px}.hidden{display:none}
 <div class="header">
 <h1>C1 Job Skills 2 - Class 8: Thriving Under Pressure</h1>
 <p style="color:#888;font-size:0.95em">Week 4 - Thriving Under Pressure - Modals of Advice</p>
-<p>Negotiation at Work • Second Conditional</p>
+<p>Negotiation at Work &bull; Second Conditional</p>
 </div>
 
 <div class="section active" id="start">
@@ -84,7 +84,7 @@ audio{width:100%;margin-top:14px}.hidden{display:none}
 <option value="3100" data-teacher="Hector Amaya">3100 - Tue/Thu 6:30 PM (Hector)</option>
 </optgroup>
 </select>
-<button class="btn" onclick="startQuiz()">Start Homework →</button>
+<button class="btn" onclick="startQuiz()">Start Homework &rarr;</button>
 <div class="note">This homework practices Class 8 content: Thriving Under Pressure and Modals of Advice (<em>should, ought to, had better</em>).</div>
 </div>
 </div>
@@ -101,43 +101,43 @@ audio{width:100%;margin-top:14px}.hidden{display:none}
 <p>The conversation helped Ana feel less alone. She took James's advice, scheduled a meeting with her manager, and began delegating some tasks to junior team members. Within two weeks, her stress levels had dropped noticeably.</p>
 </div>
 <div id="readingQuestions"></div>
-<button class="btn" onclick="checkS1()">Continue →</button>
+<button class="btn" onclick="checkS1()">Continue &rarr;</button>
 </div>
 </div>
 
 <div class="section" id="s2">
 <div class="card">
-<button type="button" class="btn-back" onclick="showSection('s1')">← Back</button>
+<button type="button" class="btn-back" onclick="showSection('s1')">&larr; Back</button>
 <div class="progress"><div class="progress-bar" style="width:40%"></div></div>
 <h2>2. Vocabulary</h2>
 <p class="small">Match the negotiation word or phrase to its meaning.</p>
 <div class="word-bank" id="wordBank"></div>
 <div id="vocabDrops"></div>
-<button class="btn" onclick="checkS2()">Continue →</button>
+<button class="btn" onclick="checkS2()">Continue &rarr;</button>
 </div>
 </div>
 
 <div class="section" id="s3">
 <div class="card">
-<button type="button" class="btn-back" onclick="showSection('s2')">← Back</button>
+<button type="button" class="btn-back" onclick="showSection('s2')">&larr; Back</button>
 <div class="progress"><div class="progress-bar" style="width:60%"></div></div>
 <h2>3. Writing</h2>
-<p class="small"><strong>Thriving Under Pressure - Stress Strategies and Modals of Advice:</strong> Write 7-9 sentences giving advice to a friend or coworker who is under pressure. Use should, ought to, and had better naturally.</p>
-<textarea id="writing" placeholder="A: If you gave me one more day, I would finish the report perfectly.
-B: If we delayed it, the client would be unhappy.
-A: What if we...
-B: ..."></textarea>
+<p class="small"><strong>Thriving Under Pressure - Stress Strategies and Modals of Advice:</strong> Write a dialogue (7-9 sentences) giving advice to a friend or coworker who is under pressure. Use should, ought to, and had better naturally.</p>
+<textarea id="writing" placeholder="A: I have been working late every night and I am exhausted.
+B: You should make a list of your tasks and sort them by priority.
+A: But I do not want to look incompetent.
+B: You ought to talk to your manager. You had better address it soon..."></textarea>
 <p class="small" style="text-align:right">Words: <span id="wc">0</span></p>
-<div class="tip-box"><strong>Grammar tip:</strong> Second Conditional = <em>If + past simple, would/could + base verb</em>. Example: <em>If I had more time, I would do a better job.</em> ❌ Don't write: <em>If I would have...</em></div>
+<div class="tip-box"><strong>Grammar tip:</strong> Second Conditional = <em>If + past simple, would/could + base verb</em>. Example: <em>If I had more time, I would do a better job.</em> &#10060; Don't write: <em>If I would have...</em></div>
 <div id="wFeedback" class="feedback hidden"></div>
-<button class="btn" id="wBtn" onclick="checkWriting()">Get Feedback →</button>
-<button class="btn hidden" id="wNext" onclick="showSection('s4')">Continue →</button>
+<button class="btn" id="wBtn" onclick="checkWriting()">Continue &rarr;</button>
+<button class="btn hidden" id="wNext" onclick="showSection('s4')">Continue &rarr;</button>
 </div>
 </div>
 
 <div class="section" id="s4">
 <div class="card">
-<button type="button" class="btn-back" onclick="showSection('s3')">← Back</button>
+<button type="button" class="btn-back" onclick="showSection('s3')">&larr; Back</button>
 <div class="progress"><div class="progress-bar" style="width:80%"></div></div>
 <h2>4. Speaking</h2>
 <p>Speak for 45-60 seconds giving practical advice for someone who feels overwhelmed by work or personal pressure.</p>
@@ -147,17 +147,17 @@ B: ..."></textarea>
 <audio id="audio" controls class="hidden"></audio>
 <div id="transcriptBox" class="transcript-box hidden"></div>
 <div id="sFeedback" class="feedback hidden"></div>
-<button class="btn" id="sBtn" onclick="checkSpeaking()">Continue →</button>
+<button class="btn" id="sBtn" onclick="checkSpeaking()">Continue &rarr;</button>
 </div>
 </div>
 
 <div class="section" id="s5">
 <div class="card">
-<button type="button" class="btn-back" onclick="showSection('s4')">← Back</button>
+<button type="button" class="btn-back" onclick="showSection('s4')">&larr; Back</button>
 <div class="progress"><div class="progress-bar" style="width:100%"></div></div>
 <h2>5. Grammar</h2>
 <div id="grammarQuestions"></div>
-<button class="btn btn-orange" onclick="submitFinal()">Submit Homework ✓</button>
+<button class="btn btn-orange" onclick="submitFinal()">Submit Homework &check;</button>
 </div>
 </div>
 
@@ -169,17 +169,16 @@ B: ..."></textarea>
 <div class="scores">
 <div><label>Reading</label><span id="scL">0/3</span></div>
 <div><label>Vocab</label><span id="scV">0/6</span></div>
-<div><label>Writing</label><span id="scW">0/20</span></div>
+<div><label>Writing</label><span id="scW">&#128105;&#8205;&#127979;</span></div>
 <div><label>Speaking</label><span id="scS">0/20</span></div>
 <div><label>Grammar</label><span id="scG">0/8</span></div>
 </div>
-<button type="button" class="btn" onclick="reviewGrammar()" style="background:#f3f4f6;color:#5B5091;border:1px solid #d1d5db;margin-bottom:10px">📝 Review Your Grammar Answers</button><button class="btn btn-orange" style="margin-top:20px" id="submitBtn" onclick="submitToTeacher()">Finish →</button><div id="submitStatus" style="display:none;margin-top:16px;background:#f0fdf4;border:2px solid #22c55e;border-radius:12px;padding:16px;text-align:center;color:#15803d"></div>
+<button type="button" class="btn" onclick="reviewGrammar()" style="background:#f3f4f6;color:#5B5091;border:1px solid #d1d5db;margin-bottom:10px">&#128221; Review Your Grammar Answers</button><button class="btn btn-orange" style="margin-top:20px" id="submitBtn" onclick="submitToTeacher()">Finish &rarr;</button><div id="submitStatus" style="display:none;margin-top:16px;background:#f0fdf4;border:2px solid #22c55e;border-radius:12px;padding:16px;text-align:center;color:#15803d"></div>
 </div>
 </div>
 </div>
 
 <script>let submitted=false;
-function isRealSpeech(t){if(!t||!t.trim())return false;var w=t.trim().split(' ').filter(Boolean);return w.length>=3;}
 function setTeacher(sel){
   const opt=sel.options[sel.selectedIndex];
   document.getElementById('teacherName').value=opt?(opt.getAttribute('data-teacher')||''):'';
@@ -188,7 +187,7 @@ function setTeacher(sel){
 const SESSION='8';
 let name='',scores={l:0,v:0,w:0,s:0,g:0},writingText='',spokenText='';
 let selectedWord=null,isRec=false,recTime=0,recTimer=null,recognition=null;
-let readingAnswers=[],grammarAnswers=[],speechRec=null;
+let readingAnswers=[],grammarAnswers=[];
 
 const readingQBank=[
   {q:"Why did Ana go to speak with James?",opts:["She wanted a promotion","She was exhausted from overwork","She had a conflict with her manager"],correct:1},
@@ -274,27 +273,16 @@ let c=0;document.querySelectorAll('.drop-target').forEach(t=>{if(t.textContent==
 
 document.addEventListener('DOMContentLoaded',function(){var we=document.getElementById('writing');if(we)we.addEventListener('input',function(){var wc=document.getElementById('wc');if(wc)wc.textContent=this.value.trim().split(' ').filter(Boolean).length;});});
 function checkWriting(){
-  writingText=document.getElementById('writing').value;
-  const text=writingText.toLowerCase();
-  let score=14;
-  const words=text.trim().split(/\s+/).filter(Boolean);
-  const wordCount=words.length;
-  if(wordCount===0){scores.w=0;document.getElementById('wFeedback').innerHTML='<b>Score: 0/20</b><br>Please write something to receive a writing score.';document.getElementById('wFeedback').classList.remove('hidden');document.getElementById('wBtn').classList.add('hidden');document.getElementById('wNext').classList.remove('hidden');return;}
-  // Second Conditional patterns - more generous, accepts inverted forms too
-  const ifWould=(text.match(/\bif\s+\w+\s+(had|were|was|knew|took|gave|accepted|lowered|shared|asked|finished|needed|could|came|went|got|did|made|said|found|wanted|tried|worked|stayed)\b/g)||[]).length;
-  const wouldCount=(text.match(/\bwould\b|\bcould\b|\bmight\b/g)||[]).length;
-  if(ifWould>=2) score+=3;
-  else if(ifWould===1) score+=2;
-  if(wouldCount>=2) score+=2;
-  else if(wouldCount===1) score+=1;
-  // Negotiation vocabulary
-  const vocabWords=['negotiat','raise','compromise','proposal','condition','adjust','accept','deadline','agreement','offer','salary','budget','resourc','suggest','propose','request'];
-  score+=Math.min(2,Math.floor(vocabWords.filter(x=>text.includes(x)).length/2));
-  // Length bonus
-  if(wordCount>=70) score+=1;
-  scores.w=Math.min(20,Math.max(12,Math.round(score)));
-  document.getElementById('wFeedback').innerHTML='<b>Score: '+scores.w+'/20</b><br>Great work! This score reflects your effort with Second Conditional sentences and negotiation language. Your teacher will give detailed feedback in class.';
-  document.getElementById('wFeedback').classList.remove('hidden');
+  writingText=document.getElementById('writing').value||'';
+  const raw=writingText.trim();
+  const wordCount=raw?raw.split(/\s+/).filter(Boolean).length:0;
+  if(wordCount<15){alert('Please write at least 15 words');return;}
+  const fb=document.getElementById('wFeedback');
+  fb.innerHTML='<strong>\u2713 Writing Saved</strong><br>'
+    +'Word count: '+wordCount
+    +'<br><br><span style="color:#15803d">\uD83D\uDC69\u200D\uD83C\uDFEB <b>Your teacher will read and grade your writing personally.</b></span>'
+    +'<br><span style="color:#555;font-size:0.92em">Writing isn\'t scored automatically because language quality needs a real reader. Your teacher will follow up with your writing score and feedback.</span>';
+  fb.classList.remove('hidden');
   document.getElementById('wBtn').classList.add('hidden');
   document.getElementById('wNext').classList.remove('hidden');
 }
@@ -356,16 +344,16 @@ function submitFinal(){
     cb.id='reviewContinueBtn';
     cb.className='btn btn-orange';
     cb.style.marginTop='15px';
-    cb.textContent='Continue to Results →';
+    cb.textContent='Continue to Results \u2192';
     cb.onclick=function(){showSection('results');};
     s5Card.appendChild(cb);
   }
-  const total=scores.l+scores.v+scores.w+scores.s+scores.g;
-  document.getElementById('finalPct').textContent=Math.round(total/57*100)+'%';
+  const total=scores.l+scores.v+scores.s+scores.g;
+  document.getElementById('finalPct').textContent=Math.round(total/37*100)+'%';
   document.getElementById('studentDisplay').textContent=name;
   document.getElementById('scL').textContent=scores.l+'/3';
   document.getElementById('scV').textContent=scores.v+'/6';
-  document.getElementById('scW').textContent=scores.w+'/20';
+  document.getElementById('scW').textContent='\uD83D\uDC69\u200D\uD83C\uDFEB';
   document.getElementById('scS').textContent=scores.s+'/20';
   document.getElementById('scG').textContent=scores.g+'/8';
   showSection('results');
@@ -377,21 +365,21 @@ function submitToTeacher(){
   var btn=document.getElementById('submitBtn');
   if(btn){btn.disabled=true;btn.textContent='Submitting...';}
   var cls=document.getElementById('className')?document.getElementById('className').value:'';
-  var total=scores.l+scores.v+scores.w+scores.s+scores.g;
-  var totalPct=Math.round(total/57*100)+'%';
+  var total=scores.l+scores.v+scores.s+scores.g;
+  var totalPct=Math.round(total/37*100)+'%';
   var formData=new FormData();
   formData.append('entry.154629934',name);
-  formData.append('entry.771629595',document.getElementById('className')?document.getElementById('className').value:'');
+  formData.append('entry.771629595',cls);
   formData.append('entry.1564061356','8');
   formData.append('entry.1994438750',scores.l+'/3');
   formData.append('entry.1169985852',scores.v+'/6');
-  formData.append('entry.66378887',scores.w+'/20');
+  formData.append('entry.66378887','Teacher will grade');
   formData.append('entry.665897330',scores.s+'/20');
   formData.append('entry.1528226896',scores.g+'/8');
   formData.append('entry.543147037',totalPct);
   formData.append('entry.301386877',writingText||'');
   formData.append('entry.1035810181',spokenText||'No transcript captured');
-  formData.append('entry.1451249480',document.getElementById('teacherName')?document.getElementById('teacherName').value:'Hector Amaya');
+  formData.append('entry.1451249480',document.getElementById('teacherName')?document.getElementById('teacherName').value:'');
   var status=document.getElementById('submitStatus');
   fetch('https://docs.google.com/forms/d/e/1FAIpQLSdrVV8m2p8QcgXK-ifK2H6By1kwAdcPm-Yp5SyB6DBgfOTiGw/formResponse',{method:'POST',mode:'no-cors',body:formData})
     .then(function(){
