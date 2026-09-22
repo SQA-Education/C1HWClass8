@@ -156,7 +156,7 @@ B: ..."></textarea>
 <div><label>Vocab</label><span id="scV">0/6</span></div>
 <div><label>Writing</label><span id="scW">0/20</span></div>
 <div><label>Speaking</label><span id="scS">0/20</span></div>
-<div><label>Grammar</label><span id="scG">0/8</span></div>
+<div><label>Grammar</label><span id="scG">0/6</span></div>
 </div>
 <button class="btn btn-orange" style="margin-top:20px" id="submitBtn" onclick="submitToTeacher()">Finish →</button><div id="submitStatus" style="display:none;margin-top:16px;background:#f0fdf4;border:2px solid #22c55e;border-radius:12px;padding:16px;text-align:center;color:#15803d"></div>
 </div>
@@ -219,7 +219,7 @@ function initQuestions(){
   words.forEach(w=>bankHTML+=`<div class="word" onclick="pickWord(this)">${w}</div>`);
   pairs.forEach(p=>dropHTML+=`<div class="drop-row"><div class="drop-def">${p.def}</div><div class="drop-target" data-a="${p.word}" onclick="dropWord(this)"></div></div>`);
   document.getElementById('wordBank').innerHTML=bankHTML;document.getElementById('vocabDrops').innerHTML=dropHTML;
-  const gQs=shuffle([...grammarQBank]).slice(0,8);let gHTML='';
+  const gQs=shuffle([...grammarQBank]).slice(0,6);let gHTML='';
   gQs.forEach((q,i)=>{const opts=q.opts.map((t,idx)=>({text:t,isCorrect:idx===q.correct}));shuffle(opts);grammarAnswers[i]=opts.findIndex(o=>o.isCorrect);gHTML+=`<div class="question" data-c="${grammarAnswers[i]}"><h4>${i+1}. ${q.q}</h4>`;opts.forEach((opt,j)=>gHTML+=`<div class="option" onclick="sel(this)" data-v="${j}"><div class="circle"></div>${opt.text}</div>`);gHTML+='</div>';});
   document.getElementById('grammarQuestions').innerHTML=gHTML;
 }
@@ -305,7 +305,7 @@ function stopRec(){
 }
 
 function checkSpeaking(){const text=spokenText.toLowerCase();let score=recTime>=12?8:recTime>=7?5:2;const items=['would','could','if','negotiat','raise','compromise','accept','agree','condition','proposal','adjust','deadline'];score+=Math.min(6,items.filter(x=>text.includes(x)).length)*2;scores.s=Math.min(20,score);document.getElementById('sFeedback').innerHTML='<b>Score: '+scores.s+'/20</b><br>Speaking is scored on completing the negotiation dialogue and using Second Conditional language clearly.';document.getElementById('sFeedback').classList.remove('hidden');showSection('s5');}
-function submitFinal(){let c=0;document.querySelectorAll('#grammarQuestions .question').forEach((q,i)=>{const s=q.querySelector('.option.selected');const a=parseInt(q.dataset.c);if(s&&parseInt(s.dataset.v)===a)c++;});scores.g=c;scores.l=0;document.querySelectorAll('#readingQuestions .question').forEach(function(q){var s=q.querySelector('.option.selected');if(s&&parseInt(s.dataset.v)===parseInt(q.dataset.c))scores.l++;});scores.v=0;document.querySelectorAll('.drop-target').forEach(function(t){if(t.textContent===t.dataset.a)scores.v++;});const total=scores.l+scores.v+scores.w+scores.s+scores.g;const pct=Math.round(total/57*100);document.getElementById('finalPct').textContent=pct+'%';document.getElementById('studentDisplay').textContent=name;document.getElementById('scL').textContent=scores.l+'/3';document.getElementById('scV').textContent=scores.v+'/6';document.getElementById('scW').textContent=scores.w+'/20';document.getElementById('scS').textContent=scores.s+'/20';document.getElementById('scG').textContent=scores.g+'/8';showSection('results');}
+function submitFinal(){let c=0;document.querySelectorAll('#grammarQuestions .question').forEach((q,i)=>{const s=q.querySelector('.option.selected');const a=parseInt(q.dataset.c);if(s&&parseInt(s.dataset.v)===a)c++;});scores.g=c;scores.l=0;document.querySelectorAll('#readingQuestions .question').forEach(function(q){var s=q.querySelector('.option.selected');if(s&&parseInt(s.dataset.v)===parseInt(q.dataset.c))scores.l++;});scores.v=0;document.querySelectorAll('.drop-target').forEach(function(t){if(t.textContent===t.dataset.a)scores.v++;});const total=scores.l+scores.v+scores.w+scores.s+scores.g;const pct=Math.round(total/55*100);document.getElementById('finalPct').textContent=pct+'%';document.getElementById('studentDisplay').textContent=name;document.getElementById('scL').textContent=scores.l+'/3';document.getElementById('scV').textContent=scores.v+'/6';document.getElementById('scW').textContent=scores.w+'/20';document.getElementById('scS').textContent=scores.s+'/20';document.getElementById('scG').textContent=scores.g+'/6';showSection('results');}
 function submitToTeacher(){
   if(submitted)return;
   submitted=true;
@@ -313,7 +313,7 @@ function submitToTeacher(){
   if(btn){btn.disabled=true;btn.textContent='Submitting...';}
   var cls=document.getElementById('className')?document.getElementById('className').value:'';
   var total=scores.l+scores.v+scores.w+scores.s+scores.g;
-  var totalPct=Math.round(total/57*100)+'%';
+  var totalPct=Math.round(total/55*100)+'%';
   var formData=new FormData();
   formData.append('entry.154629934',name);
   formData.append('entry.771629595',document.getElementById('className')?document.getElementById('className').value:'');
@@ -322,7 +322,7 @@ function submitToTeacher(){
   formData.append('entry.1169985852',scores.v+'/6');
   formData.append('entry.66378887',scores.w+'/20');
   formData.append('entry.665897330',scores.s+'/20');
-  formData.append('entry.1528226896',scores.g+'/8');
+  formData.append('entry.1528226896',scores.g+'/6');
   formData.append('entry.543147037',totalPct);
   formData.append('entry.301386877',writingText||'');
   formData.append('entry.1035810181',spokenText||'No transcript captured');
