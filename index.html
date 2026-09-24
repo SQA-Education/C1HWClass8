@@ -282,8 +282,7 @@ function startRec(){
   recTimer=setInterval(function(){recTime++;document.getElementById('timer').textContent=Math.floor(recTime/60)+':'+String(recTime%60).padStart(2,'0');},1000);
   recognition=new SR();
   recognition.continuous=false;recognition.interimResults=false;recognition.lang='en-US';
-  recognitionvar __committed=(typeof spokenText!=='undefined'?spokenText:'')||'';
-.onresult=function(e){
+  var __committed=(typeof spokenText!=='undefined'?spokenText:'')||''; recognition.onresult=function(e){
     var interim='';
     var __f='';for(var i=0;i<e.results.length;i++){if(e.results[i].isFinal)__f+=e.results[i][0].transcript+' ';else interim+=e.results[i][0].transcript+' ';}spokenText=(__committed+' '+__f).replace(/\s+/g,' ').trim();
     var display=(spokenText+interim).trim();
