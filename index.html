@@ -59,7 +59,6 @@ audio{width:100%;margin-top:14px}.hidden{display:none}
 <div class="header">
 <h1>C1 Job Skills 2 - Class 8: Thriving Under Pressure</h1>
 <p style="color:#888;font-size:0.95em">Week 4 - Thriving Under Pressure - Modals of Advice</p>
-<p>Negotiation at Work • Second Conditional</p>
 </div>
 
 <div class="section active" id="start">
@@ -99,7 +98,7 @@ audio{width:100%;margin-top:14px}.hidden{display:none}
 <div class="card">
 <div class="progress"><div class="progress-bar" style="width:40%"></div></div>
 <h2>2. Vocabulary</h2>
-<p class="small">Match the negotiation word or phrase to its meaning.</p>
+<p class="small">Match the time management and stress word or phrase to its meaning.</p>
 <div class="word-bank" id="wordBank"></div>
 <div id="vocabDrops"></div>
 <button class="btn" onclick="checkS2()">Continue →</button>
@@ -111,12 +110,10 @@ audio{width:100%;margin-top:14px}.hidden{display:none}
 <div class="progress"><div class="progress-bar" style="width:60%"></div></div>
 <h2>3. Writing</h2>
 <p class="small"><strong>Thriving Under Pressure - Stress Strategies and Modals of Advice:</strong> Write a dialogue (7-9 sentences) giving advice to a friend or coworker who is under pressure. Use should, ought to, and had better naturally.</p>
-<textarea id="writing" placeholder="A: If you gave me one more day, I would finish the report perfectly.
-B: If we delayed it, the client would be unhappy.
-A: What if we...
-B: ..."></textarea>
+<textarea id="writing" placeholder="A: I'm really stressed at work. I have three projects due next week, and I don't think I can finish them all.
+B: I understand how you feel. That sounds really difficult. You should make a list of all your tasks and prioritize them."></textarea>
 <p class="small" style="text-align:right">Words: <span id="wc">0</span></p>
-<div class="tip-box"><strong>Grammar tip:</strong> Second Conditional = <em>If + past simple, would/could + base verb</em>. Example: <em>If I had more time, I would do a better job.</em> ❌ Don't write: <em>If I would have...</em></div>
+<div class="tip-box"><strong>Grammar tip:</strong> Use <em>should</em> for general advice. Use <em>ought to</em> for strong recommendations based on what is right. Use <em>had better</em> for strong advice with possible negative consequences if not followed.</div>
 <div id="wFeedback" class="feedback hidden"></div>
 <button class="btn" id="wBtn" onclick="checkWriting()">Get Feedback →</button>
 <button class="btn hidden" id="wNext" onclick="showSection('s4')">Continue →</button>
@@ -185,12 +182,16 @@ const readingQBank=[
 ];
 
 const vocabPairs=[
-  {word:"prioritize",def:"to decide which tasks are most important and do those first"},
-  {word:"overwhelmed",def:"feeling like you have too much to deal with"},
-  {word:"sustainable",def:"able to continue for a long time without causing harm"},
-  {word:"delegate",def:"to give part of your work to someone else"},
-  {word:"incompetent",def:"not having the skills needed to do a job properly"},
-  {word:"address",def:"to deal with a problem or situation directly"}
+  {word:"deadline",def:"the time by which something must be finished"},
+  {word:"task",def:"a piece of work"},
+  {word:"efficient",def:"working well without wasting time"},
+  {word:"take a break",def:"to stop working for a short time"},
+  {word:"get through",def:"to complete or survive something difficult"},
+  {word:"stressful",def:"causing a lot of worry or pressure"},
+  {word:"make time for",def:"to create time in your schedule for something"},
+  {word:"clear your head",def:"to relax and think more clearly"},
+  {word:"cut down on",def:"to reduce"},
+  {word:"boost",def:"to improve or increase"}
 ];
 
 const grammarQBank=[
@@ -245,25 +246,22 @@ function checkWriting(){
   let score=0;
   const words=text.trim().split(/\s+/).filter(Boolean);
   const wordCount=words.length;
-  // Check for Second Conditional patterns: "if + [word] + ed/past" + "would/could"
-  const ifWould=(text.match(/if\s+\w+\s+(had|were|knew|took|gave|accepted|lowered|shared|asked|finished|needed|could|came|went|got|did|made|said|found)\b/g)||[]).length;
-  const wouldCount=(text.match(/\bwould\b|\bcould\b|\bmight\b/g)||[]).length;
-  if(ifWould>=2) score+=8;
-  else if(ifWould===1) score+=4;
-  if(wouldCount>=2) score+=3;
-  else if(wouldCount===1) score+=1;
+  // Modals of advice: should / ought to / had better (+4 each)
+  if(/\bshould\b/.test(text)) score+=4;
+  if(/\bought to\b/.test(text)) score+=4;
+  if(/\bhad better\b|\b(i|you|we|they|he|she)'d better\b/.test(text)) score+=4;
   // Dialogue structure
-  const hasDialogue=(text.match(/\b(a:|b:|person 1:|person 2:|manager:|employee:|client:)/g)||[]).length>=2;
+  const hasDialogue=(text.match(/\b(a:|b:|person 1:|person 2:|manager:|employee:|friend:|coworker:)/g)||[]).length>=2;
   if(hasDialogue) score+=3;
-  // Vocabulary
-  const vocabWords=['negotiat','raise','compromise','proposal','condition','adjust','accept','deadline','agreement','offer','salary','budget','resourc'];
+  // Vocabulary (Time Management and Stress)
+  const vocabWords=['stress','deadline','task','prioritiz','workload','burnout','break','cope','efficient','boundar','get through','make time','clear your head','cut down','boost','overwhelm'];
   score+=Math.min(4,vocabWords.filter(x=>text.includes(x)).length);
   // Length
   if(wordCount>=30) score+=1;
   if(wordCount>=50) score+=1;
   score=Math.min(20,Math.max(8,Math.round(score)));
   scores.w=score;
-  document.getElementById('wFeedback').innerHTML='<b>Score: '+scores.w+'/20</b><br>Scored on use of Second Conditional sentences, dialogue format, and negotiation vocabulary. Clear communication and correct grammar structure matter more than small spelling errors.';
+  document.getElementById('wFeedback').innerHTML='<b>Score: '+scores.w+'/20</b><br>Scored on using should, ought to, and had better to give advice, dialogue format, and time management and stress vocabulary. Clear communication and correct grammar structure matter more than small spelling errors.';
   document.getElementById('wFeedback').classList.remove('hidden');
   document.getElementById('wBtn').classList.add('hidden');
   document.getElementById('wNext').classList.remove('hidden');
@@ -302,7 +300,7 @@ function stopRec(){
   document.getElementById('sBtn').disabled=false;
 }
 
-function checkSpeaking(){const text=spokenText.toLowerCase();let score=recTime>=12?8:recTime>=7?5:2;const items=['would','could','if','negotiat','raise','compromise','accept','agree','condition','proposal','adjust','deadline'];score+=Math.min(6,items.filter(x=>text.includes(x)).length)*2;scores.s=Math.min(20,score);document.getElementById('sFeedback').innerHTML='<b>Score: '+scores.s+'/20</b><br>Speaking is scored on completing the negotiation dialogue and using Second Conditional language clearly.';document.getElementById('sFeedback').classList.remove('hidden');showSection('s5');}
+function checkSpeaking(){const text=spokenText.toLowerCase();let score=recTime>=12?8:recTime>=7?5:2;const items=['should','ought to','had better','stress','deadline','task','prioritiz','break','workload','manager','help','time'];score+=Math.min(6,items.filter(x=>text.includes(x)).length)*2;scores.s=Math.min(20,score);document.getElementById('sFeedback').innerHTML='<b>Score: '+scores.s+'/20</b><br>Speaking is scored on giving practical advice for handling pressure and using should, ought to, and had better clearly.';document.getElementById('sFeedback').classList.remove('hidden');showSection('s5');}
 function submitFinal(){let c=0;document.querySelectorAll('#grammarQuestions .question').forEach((q,i)=>{const s=q.querySelector('.option.selected');const a=parseInt(q.dataset.c);if(s&&parseInt(s.dataset.v)===a)c++;});scores.g=c;scores.l=0;document.querySelectorAll('#readingQuestions .question').forEach(function(q){var s=q.querySelector('.option.selected');if(s&&parseInt(s.dataset.v)===parseInt(q.dataset.c))scores.l++;});scores.v=0;document.querySelectorAll('.drop-target').forEach(function(t){if(t.textContent===t.dataset.a)scores.v++;});const total=scores.l+scores.v+scores.w+scores.s+scores.g;const pct=Math.round(total/55*100);document.getElementById('finalPct').textContent=pct+'%';document.getElementById('studentDisplay').textContent=name;document.getElementById('scL').textContent=scores.l+'/3';document.getElementById('scV').textContent=scores.v+'/6';document.getElementById('scW').textContent=scores.w+'/20';document.getElementById('scS').textContent=scores.s+'/20';document.getElementById('scG').textContent=scores.g+'/6';showSection('results');}
 function submitToTeacher(){
   if(submitted)return;
